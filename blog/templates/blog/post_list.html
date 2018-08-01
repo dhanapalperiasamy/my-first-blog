@@ -1,25 +1,13 @@
-<html>
-<body>
-    <p>Hi there!</p>
-    <p>It works!</p>
-</body>
-</html>
+{% extends 'blog/base.html' %}
 
-<html>
-    <head>
-        <title>Dhanapal Periasamy Blog</title>
-    </head>
-    <body>
-        <div>
-            <h1><a href="/">Dhanapal</a></h1>
-        </div>
-
-        {% for post in posts %}
-    <div>
-        <p>published: {{ post.published_date }}</p>
-        <h1><a href="">{{ post.title }}</a></h1>
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
         <p>{{ post.text|linebreaksbr }}</p>
     </div>
-{% endfor %}
-    </body>
-</html>
+{% endblock %}
